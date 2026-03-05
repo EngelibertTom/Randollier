@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "T-shirt éco-responsable",
+    "price": 25,
+    "image": "https://picsum.photos/300?random=1",
+    "description": "T-shirt en coton bio, fabriqué localement."
+  },
+  {
+    "id": 2,
+    "name": "Gourde en inox",
+    "price": 35,
+    "image": "https://picsum.photos/300?random=2",
+    "description": "Solide, durable et sans BPA."
+  },
+  {
+    "id": 3,
+    "name": "Sac à dos minimaliste",
+    "price": 60,
+    "image": "https://picsum.photos/300?random=3",
+    "description": "Un sac à dos pratique, idéal pour le quotidien."
+  }
+]
