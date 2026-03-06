@@ -17,7 +17,7 @@ onMounted(async () => {
 })
 
 const addToCart = () => {
-  cart.add(product, 1); 
+  cart.add(product.value, 1)
 }
 
 </script>

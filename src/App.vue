@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  Panier : {{cart.items.length}} élément(s)
+  <a href="/cart">Panier : {{cart.items.length}} élément(s)</a>
   <router-view />
 </template>
 
