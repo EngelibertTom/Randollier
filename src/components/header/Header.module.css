@@ -1,0 +1,42 @@
+.header {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.halfOne {
+    display: flex;
+    align-items: center;
+    gap:120px;
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+}
+
+.nav a {
+    border-bottom: 1px solid transparent; 
+    transition: border-color 0.2s
+}
+
+.nav a:hover {
+    border-bottom: 1px solid #111111;
+}
+
+.logo {
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.icons {
+    display:flex;
+    align-items: center;
+    gap:30px
+}
+
+.icons img {
+    height:20px;
+}
