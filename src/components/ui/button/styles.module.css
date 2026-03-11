@@ -1,0 +1,7 @@
+.button {
+    border-radius: 30px;
+    padding-inline: 16px;
+    background-color: #ffffff;
+    color:#111111;
+    width: fit-content;
+}
