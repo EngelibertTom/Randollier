@@ -21,8 +21,6 @@
       {{ product.price }} € 
     </p>
 
-   
-
   </div>
 </template>
 

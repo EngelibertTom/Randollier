@@ -1,0 +1,5 @@
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes égales */
+  gap: 0.75rem; 
+}
