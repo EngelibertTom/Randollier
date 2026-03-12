@@ -2,8 +2,8 @@
     position:relative;
     height: 70vh;
     border-radius: 30px;
-    width: 95%;
-    margin: 10px auto 0 auto;
+    width: 100%;
+    margin: 0 auto;
     background-image: url('@/assets/images/hero.jpg');
     background-position: 40% center;
     display: flex;

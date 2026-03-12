@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductCard from './ProductCard.vue';
+import ProductCard from './productCard/ProductCard.vue';
 import { ref, onMounted } from 'vue';
 
 const products = ref([])
@@ -12,7 +12,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-4">
+  <div class="grid grid-cols-4 gap-3">
     <ProductCard
         v-for="product in products"
         :key ="product.id" :product="product"

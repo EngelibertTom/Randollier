@@ -19,5 +19,12 @@
     "price": 60,
     "image": "https://picsum.photos/300?random=3",
     "description": "Un sac à dos pratique, idéal pour le quotidien."
+  },
+  {
+    "id": 4,
+    "name": "Sac à dos minimaliste",
+    "price": 60,
+    "image": "https://picsum.photos/300?random=3",
+    "description": "Un sac à dos pratique, idéal pour le quotidien."
   }
 ]

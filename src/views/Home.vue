@@ -1,12 +1,11 @@
 <template>
-  <HeroSection/>
-  <!-- <div>
-    <h1>Produits</h1>
-    <ProductList />
-  </div> -->
+  <div class="mainContainer">
+    <HeroSection/>
+    <ProductsSection/>
+  </div>
 </template>
 
 <script setup lang="ts">
-import ProductList from '../components/ProductList.vue';
+import ProductsSection from '../components/sections/productsSection/ProductsSection.vue';
 import HeroSection from '../components/sections/heroSection/HeroSection.vue';
 </script>
