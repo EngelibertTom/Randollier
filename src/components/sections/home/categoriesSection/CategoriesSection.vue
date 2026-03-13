@@ -11,7 +11,7 @@
 
 </template>
 <script setup lang="ts">
-import CategoryCard from '../../categoryCard/CategoryCard.vue';
+import CategoryCard from '@/components/categoryCard/CategoryCard.vue';
 import styles from './CategoriesSection.module.css'
 
 import menImg from '@/assets/images/men.png'

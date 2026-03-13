@@ -1,0 +1,20 @@
+.certifs {
+    display: flex;
+    justify-content: center;
+    gap:180px;
+    align-items: center;
+    border-top: 1px solid lightgrey;
+    padding:80px;
+}
+
+.certif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap:20px
+}
+
+.certif img {
+    height:28px
+}
