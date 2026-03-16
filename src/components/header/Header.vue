@@ -1,7 +1,7 @@
 <template>
   <header :class="styles.header">
     <div :class="styles.halfOne">
-      <span :class="styles.logo">Randollier</span>
+      <span :class="styles.logo"><router-link to="/">Randollier</router-link></span>
         <nav :class="styles.nav">
           <router-link to="/">Catalogue</router-link>
           <router-link to="/products">À propos</router-link>
