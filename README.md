@@ -1,4 +1,4 @@
-# Mini E-Commerce Vue.js
+# Randollier
 
 **Projet en cours** – Ce projet est un petit site e-commerce développé avec **Vue 3**, **TypeScript** et **Pinia**, dans le but de m’autoformer et de pratiquer les bonnes pratiques du développement front-end moderne. L’objectif est de créer une interface **propre, interactive et responsive** tout en expérimentant des fonctionnalités réelles d’un site e-commerce.
 
