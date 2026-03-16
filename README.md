@@ -17,11 +17,11 @@
 
 ### Page d’accueil
 
-![Page d’accueil](assets/screenshots/home.png)
+![Page d’accueil](/src/assets/screenshots/home.png)
 
 ### Page Panier
 
-![Page Panier](assets/screenshots/cart.png)
+![Page Panier](/src/assets/screenshots/cart.png)
 
 ---
 
