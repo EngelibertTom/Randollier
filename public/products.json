@@ -4,27 +4,95 @@
     "name": "T-shirt éco-responsable",
     "price": 25,
     "image": "https://picsum.photos/300?random=1",
-    "description": "T-shirt en coton bio, fabriqué localement."
+    "description": "T-shirt en coton bio, fabriqué localement.",
+    "category": "Homme"
   },
   {
     "id": 2,
     "name": "Gourde en inox",
     "price": 35,
     "image": "https://picsum.photos/300?random=2",
-    "description": "Solide, durable et sans BPA."
+    "description": "Solide, durable et sans BPA.",
+    "category": "Équipements"
   },
   {
     "id": 3,
     "name": "Sac à dos minimaliste",
     "price": 60,
     "image": "https://picsum.photos/300?random=3",
-    "description": "Un sac à dos pratique, idéal pour le quotidien."
+    "description": "Un sac à dos pratique, idéal pour le quotidien.",
+    "category": "Sacs"
   },
   {
     "id": 4,
-    "name": "Sac à dos minimaliste",
-    "price": 60,
-    "image": "https://picsum.photos/300?random=3",
-    "description": "Un sac à dos pratique, idéal pour le quotidien."
+    "name": "Veste imperméable homme",
+    "price": 120,
+    "image": "https://picsum.photos/300?random=4",
+    "description": "Veste légère et imperméable pour toutes les météos.",
+    "category": "Homme"
+  },
+  {
+    "id": 5,
+    "name": "Pantalon de randonnée femme",
+    "price": 75,
+    "image": "https://picsum.photos/300?random=5",
+    "description": "Pantalon stretch résistant et respirant.",
+    "category": "Femme"
+  },
+  {
+    "id": 6,
+    "name": "Bâtons de marche",
+    "price": 45,
+    "image": "https://picsum.photos/300?random=6",
+    "description": "Bâtons en aluminium légers avec poignées ergonomiques.",
+    "category": "Équipements"
+  },
+  {
+    "id": 7,
+    "name": "Sac de trekking 40L",
+    "price": 95,
+    "image": "https://picsum.photos/300?random=7",
+    "description": "Grand sac avec armature dorsale pour les longues randonnées.",
+    "category": "Sacs"
+  },
+  {
+    "id": 8,
+    "name": "Polaire femme",
+    "price": 55,
+    "image": "https://picsum.photos/300?random=8",
+    "description": "Polaire douce et chaude, idéale pour les soirées en montagne.",
+    "category": "Femme"
+  },
+  {
+    "id": 9,
+    "name": "Lampe frontale",
+    "price": 30,
+    "image": "https://picsum.photos/300?random=9",
+    "description": "Lampe frontale puissante avec autonomie de 12h.",
+    "category": "Équipements"
+  },
+  {
+    "id": 10,
+    "name": "Chaussures de trek homme",
+    "price": 140,
+    "image": "https://picsum.photos/300?random=10",
+    "description": "Chaussures montantes imperméables et semelle Vibram.",
+    "category": "Homme"
+  },
+  {
+    "id": 11,
+    "name": "Sac banane",
+    "price": 28,
+    "image": "https://picsum.photos/300?random=11",
+    "description": "Petit sac banane pratique pour les essentiels.",
+    "category": "Sacs"
+  },
+  {
+    "id": 12,
+    "name": "Legging technique femme",
+    "price": 48,
+    "image": "https://picsum.photos/300?random=12",
+    "description": "Legging haute performance, anti-transpiration.",
+    "category": "Femme"
   }
 ]

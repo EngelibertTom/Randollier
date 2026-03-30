@@ -16,6 +16,21 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-bg: #F8F8F8;
+  --color-surface: #ffffff;
+  --color-border: #E0E0E0;
+  --color-divider: #EFEFEF;
+  --color-text: #111111;
+  --color-text-muted: #666666;
+  --radius-card: 30px;
+  --radius-card-top: 30px 30px 0px 0px;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.1rem;
+  --font-size-logo: 1.75rem;
+  --font-weight-heading: 700;
+  --font-weight-subheading: 600;
+  --line-height-heading: 1.1;
 }
 
 
@@ -27,23 +42,27 @@ body {
 
 .mainContainer {
   margin-inline: 30px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
-  gap:30px;
+  gap: 30px;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
 }
 
 h2 {
-  font-size :1.5em;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-heading);
   text-align: left;
 }
 
 h3 {
-  font-weight: 600;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-subheading);
 }
 
 #app {
@@ -58,5 +77,25 @@ h3 {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mainContainer {
+    margin-inline: 16px;
+    gap: 20px;
   }
 }

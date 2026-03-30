@@ -2,15 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: #F8F8F8;
-  border-radius: 30px;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-card);
   gap: 10px;
   padding: 16px;
+
 }
 
 .container > div {
-  background-color: #ffffff;
-  border-radius: 30px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
   padding: 24px;
 }
 
@@ -30,10 +31,10 @@
 }
 
 .title {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-heading);
   margin: 0 0 16px 0;
-  color: #111;
+  color: var(--color-text);
   text-align: left;
 }
 
@@ -42,18 +43,18 @@
   align-items: flex-start;
   gap: 16px;
   padding: 16px 0;
-  border-top: 1px solid #EFEFEF;
+  border-top: 1px solid var(--color-divider);
 }
 
 .item:last-of-type {
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid var(--color-divider);
 }
 
 .itemImage {
   width: 100px;
   height: 100px;
   min-width: 100px;
-  background-color: #E0E0E0;
+  background-color: var(--color-border);
   border-radius: 16px;
 }
 
@@ -66,8 +67,8 @@
 
 .itemPrice {
   font-size: 1rem;
-  font-weight: 700;
-  color: #111;
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text);
 }
 
 .itemNameRow {
@@ -93,14 +94,14 @@
 }
 
 .removeBtn:hover {
-  color: #111;
+  color: var(--color-text);
 }
 
 .quantityControl {
   display: flex;
   align-items: center;
   gap: 0;
-  border: 1.5px solid #E0E0E0;
+  border: 1.5px solid var(--color-border);
   border-radius: 8px;
   width: fit-content;
   overflow: hidden;
@@ -121,7 +122,7 @@
 }
 
 .qtyBtn:hover {
-  background-color: #F0F0F0;
+  background-color: var(--color-bg);
 }
 
 .qtyValue {
@@ -129,7 +130,7 @@
   font-weight: 500;
   min-width: 28px;
   text-align: center;
-  color: #111;
+  color: var(--color-text);
 }
 
 .cartFooter {
@@ -138,17 +139,17 @@
   align-items: center;
   gap: 12px;
   padding-top: 16px;
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
   font-size: 1rem;
-  color: #111;
+  color: var(--color-text);
 }
 
 .footerLabel {
-  font-weight: 600;
+  font-weight: var(--font-weight-subheading);
 }
 
 .footerAmount {
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
 }
 
 .summaryRow {
@@ -156,11 +157,11 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.95rem;
-  color: #111;
+  color: var(--color-text);
 }
 
 .summaryLabel {
-  font-weight: 600;
+  font-weight: var(--font-weight-subheading);
 }
 
 .summaryAmount {
@@ -176,8 +177,8 @@
 
 .acceptedLabel {
   font-size: 0.85rem;
-  font-weight: 600;
-  color: #111;
+  font-weight: var(--font-weight-subheading);
+  color: var(--color-text);
 }
 
 .paymentIcons {
@@ -190,4 +191,16 @@
   width: 44px;
   height: 28px;
   border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    margin-inline: 16px;
+  }
+
+  .summary {
+    min-width: auto;
+    width: 100%;
+  }
 }

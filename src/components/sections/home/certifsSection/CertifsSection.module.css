@@ -1,20 +1,28 @@
 .certifs {
-    display: flex;
-    justify-content: center;
-    gap:180px;
-    align-items: center;
-    border-top: 1px solid lightgrey;
-    padding:80px;
+  display: flex;
+  justify-content: center;
+  gap: 180px;
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  padding: 80px;
 }
 
 .certif {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap:20px
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
 }
 
 .certif img {
-    height:28px
+  height: 28px;
+}
+
+@media (max-width: 768px) {
+  .certifs {
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 20px;
+  }
 }
