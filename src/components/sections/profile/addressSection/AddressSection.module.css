@@ -1,0 +1,192 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+}
+
+.addBtn {
+  padding: 8px 20px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.addBtn:hover {
+  border-color: var(--color-text);
+}
+
+.addresses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.addressCard {
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.cardLabel {
+  font-weight: var(--font-weight-subheading);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.defaultBadge {
+  font-size: 0.72rem;
+  background-color: var(--color-bg);
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--color-text-muted);
+}
+
+.cardActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.cardActions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.cardActions button:hover {
+  color: var(--color-text);
+}
+
+.deleteBtn {
+  color: #e53935 !important;
+}
+
+.deleteBtn:hover {
+  color: #c62828 !important;
+}
+
+.empty {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.form {
+  background-color: var(--color-bg);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formTitle {
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.submitBtn {
+  padding: 10px 24px;
+  border-radius: var(--radius-card);
+  background-color: var(--color-text);
+  color: var(--color-surface);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-subheading);
+  transition: opacity 0.2s;
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.cancelBtn:hover {
+  color: var(--color-text);
+}
+
+.success {
+  font-size: 0.9rem;
+  color: #3daa5c;
+  margin: 0;
+}
+
+.error {
+  font-size: 0.9rem;
+  color: #e53935;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .addresses {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
