@@ -45,6 +45,7 @@
   gap: 3px;
   font-size: 0.9rem;
   color: var(--color-text-muted);
+  text-align: left;
 }
 
 .cardHeader {
@@ -100,6 +101,7 @@
 .empty {
   color: var(--color-text-muted);
   font-size: 0.9rem;
+  text-align: left;
 }
 
 .form {

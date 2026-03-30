@@ -1,0 +1,152 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #3daa5c;
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-heading);
+  margin: 0;
+  color: var(--color-text);
+}
+
+.orderId {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  background-color: var(--color-bg);
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+.message {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.createAccountBox {
+  width: 100%;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.boxTitle {
+  font-size: 1rem;
+  font-weight: var(--font-weight-subheading);
+  margin: 0;
+  color: var(--color-text);
+}
+
+.boxText {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.error {
+  font-size: 0.85rem;
+  color: #e53935;
+  margin: 0;
+}
+
+.createBtn {
+  padding: 11px 24px;
+  border-radius: var(--radius-card);
+  background-color: var(--color-text);
+  color: var(--color-surface);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-subheading);
+  transition: opacity 0.2s;
+}
+
+.createBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.skipBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.skipBtn:hover {
+  color: var(--color-text);
+}
+
+.successBox {
+  font-size: 0.9rem;
+  color: #3daa5c;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.homeBtn {
+  padding: 11px 24px;
+  border-radius: var(--radius-card);
+  background-color: var(--color-text);
+  color: var(--color-surface);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-subheading);
+  transition: opacity 0.2s;
+}
+
+.homeBtn:hover {
+  opacity: 0.8;
+}
+
+.ordersLink {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.ordersLink:hover {
+  color: var(--color-text);
+}

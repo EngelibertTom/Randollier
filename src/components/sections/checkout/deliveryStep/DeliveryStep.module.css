@@ -1,0 +1,159 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  align-items: start;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-heading);
+  margin: 0;
+  color: var(--color-text);
+}
+
+.savedAddresses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.addressCard {
+  padding: 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: border-color 0.2s;
+  text-align: left;
+}
+
+.addressCard:hover {
+  border-color: var(--color-text-muted);
+}
+
+.addressCard.selected {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.cardLabel {
+  font-weight: var(--font-weight-subheading);
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.badge {
+  font-size: 0.72rem;
+  background-color: var(--color-bg);
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--color-text-muted);
+}
+
+.checkMark {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.newAddressBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  padding: 0;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.newAddressBtn:hover {
+  color: var(--color-text);
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding: 0;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: var(--color-text);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.continueBtn {
+  padding: 13px 24px;
+  border-radius: var(--radius-card);
+  background-color: var(--color-text);
+  color: var(--color-surface);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-subheading);
+  width: 100%;
+  transition: opacity 0.2s;
+}
+
+.continueBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    order: -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .savedAddresses {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

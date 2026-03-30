@@ -1,0 +1,147 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  align-items: start;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding: 0;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: var(--color-text);
+}
+
+.title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-heading);
+  margin: 0;
+  color: var(--color-text);
+}
+
+.deliveryRecap {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recapLabel {
+  font-weight: var(--font-weight-subheading);
+  color: var(--color-text);
+  font-size: 0.8rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-subheading);
+  color: var(--color-text);
+  text-align: left;
+}
+
+.cardInput {
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 0.05em;
+}
+
+.cardInput:focus {
+  border-color: var(--color-text);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.simNote {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  background-color: var(--color-bg);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.error {
+  font-size: 0.85rem;
+  color: #e53935;
+  margin: 0;
+}
+
+.payBtn {
+  padding: 14px 24px;
+  border-radius: var(--radius-card);
+  background-color: #3daa5c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: var(--font-weight-heading);
+  width: 100%;
+  transition: opacity 0.2s;
+}
+
+.payBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -28,7 +28,7 @@
         <span :class="styles.summaryAmount">{{ livraison === 0 ? '—' : formatPrice(livraison) }}</span>
       </div>
 
-       <Button text="Paiement" bgColor="#3DAA5C" textColor="#ffffff" :customStyle="{ width: '100%', fontWeight: 'bold', fontSize: '1rem' }"/>
+       <Button text="Paiement" bgColor="#3DAA5C" textColor="#ffffff" :customStyle="{ width: '100%', fontWeight: 'bold', fontSize: '1rem' }" @click="router.push('/checkout')"/>
 
       <div :class="styles.acceptedPayments">
         <span :class="styles.acceptedLabel">Nous acceptons :</span>
@@ -44,6 +44,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import styles from './MainSection.module.css'
 import { useCartStore } from '@/stores/cart'
 import CartItem from '@/components/cartItem/CartItem.vue'
@@ -53,6 +54,7 @@ import paypalIcon from "@/assets/icons/paypal.svg"
 import masterCardIcon from "@/assets/icons/masterCard.svg"
 
 const cart = useCartStore()
+const router = useRouter()
 cart.loadFromStorage()
 
 const livraison = ref(0)
