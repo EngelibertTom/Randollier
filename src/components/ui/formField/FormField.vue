@@ -6,8 +6,9 @@
 
     <select
       v-if="type === 'select'"
-      :class="[styles.input, styles.selectInput, error && styles.inputError]"
+      :class="[styles.input, styles.selectInput, error && styles.inputError, disabled && styles.inputDisabled]"
       :value="modelValue"
+      :disabled="disabled"
       @change="emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >
       <option v-if="placeholder" value="" disabled>{{ placeholder }}</option>
@@ -16,20 +17,22 @@
 
     <textarea
       v-else-if="type === 'textarea'"
-      :class="[styles.input, error && styles.inputError]"
+      :class="[styles.input, error && styles.inputError, disabled && styles.inputDisabled]"
       :placeholder="placeholder"
       :value="modelValue"
       :rows="rows ?? 4"
+      :disabled="disabled"
       @input="emit('update:modelValue', ($event.target as HTMLTextAreaElement).value)"
     />
 
     <input
       v-else
       :type="type ?? 'text'"
-      :class="[styles.input, error && styles.inputError]"
+      :class="[styles.input, error && styles.inputError, disabled && styles.inputDisabled]"
       :placeholder="placeholder"
       :value="modelValue"
       :required="required"
+      :disabled="disabled"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     />
 
@@ -47,6 +50,7 @@ withDefaults(defineProps<{
   placeholder?: string
   error?: string
   required?: boolean
+  disabled?: boolean
   options?: { value: string; label: string }[]
   rows?: number
 }>(), {

@@ -4,8 +4,51 @@
   gap: 24px;
 }
 
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .title {
   margin: 0;
+}
+
+.editBtn {
+  padding: 7px 18px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.editBtn:hover {
+  border-color: var(--color-text);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cancelBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.cancelBtn:hover {
+  color: var(--color-text);
 }
 
 .form {
