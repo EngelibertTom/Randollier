@@ -7,40 +7,42 @@
     </header>
 
     <main :class="[styles.content, isNarrow && styles.narrow]">
-      <EmailStep
-        v-if="step === 'email'"
-        @continue="onEmailContinue"
-        @asGuest="onAsGuest"
-      />
-      <LoginStep
-        v-else-if="step === 'login'"
-        :email="checkoutEmail"
-        @login="onAuthSuccess"
-        @asGuest="onAsGuest"
-        @back="step = 'email'"
-      />
-      <RegisterStep
-        v-else-if="step === 'register'"
-        :email="checkoutEmail"
-        @register="onAuthSuccess"
-        @asGuest="onAsGuest"
-        @back="step = 'email'"
-      />
-      <DeliveryStep
-        v-else-if="step === 'delivery'"
-        @continue="onDeliveryContinue"
-      />
-      <PaymentStep
-        v-else-if="step === 'payment'"
-        :address="selectedAddress!"
-        @pay="onPay"
-        @back="step = 'delivery'"
-      />
-      <ConfirmationStep
-        v-else-if="step === 'confirmation'"
-        :orderId="orderId"
-        :email="checkoutEmail"
-      />
+      <div :class="styles.stepCard">
+        <EmailStep
+          v-if="step === 'email'"
+          @continue="onEmailContinue"
+          @asGuest="onAsGuest"
+        />
+        <LoginStep
+          v-else-if="step === 'login'"
+          :email="checkoutEmail"
+          @login="onAuthSuccess"
+          @asGuest="onAsGuest"
+          @back="step = 'email'"
+        />
+        <RegisterStep
+          v-else-if="step === 'register'"
+          :email="checkoutEmail"
+          @register="onAuthSuccess"
+          @asGuest="onAsGuest"
+          @back="step = 'email'"
+        />
+        <DeliveryStep
+          v-else-if="step === 'delivery'"
+          @continue="onDeliveryContinue"
+        />
+        <PaymentStep
+          v-else-if="step === 'payment'"
+          :address="selectedAddress!"
+          @pay="onPay"
+          @back="step = 'delivery'"
+        />
+        <ConfirmationStep
+          v-else-if="step === 'confirmation'"
+          :orderId="orderId"
+          :email="checkoutEmail"
+        />
+      </div>
     </main>
   </div>
 </template>
@@ -56,7 +58,7 @@ import RegisterStep from '@/components/sections/checkout/registerStep/RegisterSt
 import DeliveryStep from '@/components/sections/checkout/deliveryStep/DeliveryStep.vue'
 import PaymentStep from '@/components/sections/checkout/paymentStep/PaymentStep.vue'
 import ConfirmationStep from '@/components/sections/checkout/confirmationStep/ConfirmationStep.vue'
-import styles from './Checkout.module.css'
+import styles from '@/components/sections/checkout/Checkout.module.css'
 
 type Step = 'email' | 'login' | 'register' | 'delivery' | 'payment' | 'confirmation'
 

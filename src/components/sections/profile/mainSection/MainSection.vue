@@ -1,4 +1,5 @@
 <template>
+  <div :class="styles.wrapper">
   <div :class="styles.layout">
     <aside :class="styles.sidebar">
       <div :class="styles.avatarBlock">
@@ -27,6 +28,7 @@
       <OrdersSection   v-else-if="activeSection === 'orders'" />
       <SecuritySection v-else-if="activeSection === 'security'" />
     </div>
+  </div>
   </div>
 </template>
 
