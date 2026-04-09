@@ -5,6 +5,7 @@ import Cart from '../views/Cart.vue'
 import Catalogue from '../views/Catalogue.vue'
 import Profile from '../views/Profile.vue'
 import Checkout from '../views/Checkout.vue'
+import Auth from '../views/Auth.vue'
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
@@ -13,6 +14,7 @@ const routes = [
     { path: '/cart', name: 'Cart', component: Cart },
     { path: '/profile', name: 'Profile', component: Profile },
     { path: '/checkout', name: 'Checkout', component: Checkout },
+    { path: '/auth', name: 'Auth', component: Auth },
 ]
 
 const router = createRouter({

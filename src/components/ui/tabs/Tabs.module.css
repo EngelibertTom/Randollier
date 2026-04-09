@@ -1,0 +1,26 @@
+.tabs {
+  display: flex;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-card);
+  padding: 4px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background: none;
+  border-radius: calc(var(--radius-card) - 4px);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-subheading);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.tabActive {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}

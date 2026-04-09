@@ -1,0 +1,82 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Form panel ─────────────────────────────────────── */
+.formPanel {
+  width: 480px;
+  flex-shrink: 0;
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  overflow-y: auto;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Divider + switch ───────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.switchText {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  text-align: left;
+}
+
+.switchLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: var(--font-weight-subheading);
+  color: var(--color-text);
+  padding: 0;
+  text-decoration: underline;
+  transition: opacity 0.2s;
+}
+
+.switchLink:hover {
+  opacity: 0.65;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .formPanel {
+    width: 100%;
+    padding: 32px 20px 48px;
+    align-items: flex-start;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}

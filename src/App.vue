@@ -13,6 +13,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <Header v-if="route.name !== 'Checkout'" />
+  <Header v-if="route.name !== 'Checkout' && route.name !== 'Auth'" />
   <router-view />
 </template>

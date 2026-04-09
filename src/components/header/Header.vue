@@ -15,7 +15,7 @@
           {{ cart.items.length }}
         </span>
       </router-link>
-      <router-link to="/profile">
+      <router-link :to="auth.isLoggedIn ? '/profile' : '/auth'">
         <img src="@/assets/icons/profil.svg" alt="Profil"/>
       </router-link>
       <button :class="styles.hamburger" @click="menuOpen = !menuOpen" aria-label="Menu">
@@ -30,8 +30,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useCartStore } from '../../stores/cart'
+import { useAuthStore } from '../../stores/auth'
 import styles from './Header.module.css'
 
 const cart = useCartStore()
+const auth = useAuthStore()
 const menuOpen = ref(false)
 </script>

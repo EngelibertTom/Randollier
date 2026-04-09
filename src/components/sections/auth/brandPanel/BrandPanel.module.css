@@ -1,0 +1,96 @@
+.panel {
+  flex: 1;
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background-color: var(--color-text);
+  color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('@/assets/images/hero.jpg') center / cover no-repeat;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.logo {
+  font-size: var(--font-size-logo);
+  font-weight: var(--font-weight-heading);
+  color: var(--color-surface);
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  margin-bottom: auto;
+  margin-inline: 18px;
+}
+
+.content {
+  margin-bottom: auto;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  margin-inline: 18px;
+}
+
+.headline {
+  font-size: 2.25rem;
+  font-weight: var(--font-weight-heading);
+  line-height: 1.15;
+  margin: 0 0 16px;
+  color: var(--color-surface);
+  text-align: left;
+}
+
+.sub {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 28px;
+  max-width: 400px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-subheading);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 900px) {
+  .panel {
+    padding: 32px 24px 40px;
+    min-height: 220px;
+  }
+
+  .content {
+    margin-top: 32px;
+    margin-bottom: 0;
+  }
+
+  .headline {
+    font-size: 1.6rem;
+  }
+
+  .sub {
+    display: none;
+  }
+}
