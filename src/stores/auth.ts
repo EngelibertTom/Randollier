@@ -5,14 +5,26 @@ const KNOWN_EMAILS = ['tom@randollier.fr', 'test@test.com', 'existing@test.com']
 
 // Simulation d'appel API — à remplacer par fetch vers le backend Symfony
 // POST /api/auth/check-email  → { exists: boolean }
-// POST /api/auth/login        → { token: string; user: AuthUser }
 // POST /api/auth/register     → { token: string; user: AuthUser }
 // POST /api/auth/register-from-guest → { token: string }
-async function apiCall(endpoint: string, method: string, body?: unknown): Promise<void> {
-  console.debug(`[Auth API] ${method} ${endpoint}`, body)
-  // TODO: décommenter pour connecter le backend Symfony
-  // const res = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, { ... })
-  await new Promise<void>(resolve => setTimeout(resolve, 700))
+async function apiCall<T>(endpoint: string, method: string, body?: unknown): Promise<T> {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
+    method,
+    credentials: 'include', // envoie et reçoit les cookies httpOnly
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: body !== undefined ? JSON.stringify(body) : undefined,
+  })
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}))
+    throw new Error(error.message ?? `Erreur ${res.status}`)
+  }
+
+  const text = await res.text()
+  return (text ? JSON.parse(text) : {}) as T
 }
 
 export interface AuthUser {
@@ -34,6 +46,16 @@ export const useAuthStore = defineStore('auth', {
   }),
 
   actions: {
+    async fetchMe() {
+      try {
+        const user = await apiCall<AuthUser>('/me', 'GET')
+        this.currentUser = user
+        this.isLoggedIn = true
+      } catch {
+        // cookie absent ou expiré → pas connecté
+      }
+    },
+
     // GET /api/auth/check-email?email=...
     async checkEmail(email: string) {
       this.loading = true
@@ -49,13 +71,12 @@ export const useAuthStore = defineStore('auth', {
     // POST /api/auth/login — { email, password }
     // Simulation : mot de passe "123456" fonctionne toujours
     async login(email: string, password: string) {
+
       this.loading = true
       this.error = null
       try {
-        await apiCall('/auth/login', 'POST', { email, password })
-        if (password !== '123456') throw new Error('Mot de passe incorrect.')
-        this.currentUser = { email, firstName: 'Tom', lastName: 'Engelibert' }
-        this.isLoggedIn = true
+        await apiCall<unknown>('/login_check', 'POST', { email, password })
+        await this.fetchMe()
         this.isGuest = false
         this.guestEmail = null
       } catch (e: unknown) {

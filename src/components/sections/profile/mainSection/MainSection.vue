@@ -20,6 +20,8 @@
           {{ item.label }}
         </button>
       </nav>
+
+      <button :class="styles.logoutBtn" @click="logout">Se déconnecter</button>
     </aside>
 
     <div :class="styles.content">
@@ -34,7 +36,9 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import { useAuthStore } from '@/stores/auth'
 import InfoSection     from '@/components/sections/profile/infoSection/InfoSection.vue'
 import AddressSection  from '@/components/sections/profile/addressSection/AddressSection.vue'
 import OrdersSection   from '@/components/sections/profile/ordersSection/OrdersSection.vue'
@@ -44,7 +48,14 @@ import styles from './MainSection.module.css'
 type Section = 'info' | 'addresses' | 'orders' | 'security'
 
 const user = useUserStore()
+const auth = useAuthStore()
+const router = useRouter()
 const activeSection = ref<Section>('info')
+
+function logout() {
+  auth.logout()
+  router.push('/')
+}
 
 const navItems: { id: Section; label: string }[] = [
   { id: 'info',      label: 'Informations personnelles' },
