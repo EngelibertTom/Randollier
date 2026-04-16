@@ -86,16 +86,13 @@ export const useAuthStore = defineStore('auth', {
       }
     },
 
-    // POST /api/auth/register — { email, password, firstName, lastName }
+    // POST /api/register — { email, password, firstName, lastName }
     async register(data: { email: string; password: string; firstName: string; lastName: string }) {
       this.loading = true
       this.error = null
       try {
-        await apiCall('/auth/register', 'POST', data)
-        this.currentUser = { email: data.email, firstName: data.firstName, lastName: data.lastName }
-        this.isLoggedIn = true
-        this.isGuest = false
-        this.guestEmail = null
+        await apiCall('/register', 'POST', data)
+        await this.login(data.email, data.password)
       } catch {
         this.error = 'Une erreur est survenue lors de la création du compte.'
       } finally {
