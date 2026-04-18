@@ -33,13 +33,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useUserStore } from '@/stores/user'
 import type { Order } from '@/types'
 import styles from './OrdersSection.module.css'
 
 const user = useUserStore()
 const expanded = ref<number | null>(null)
+
+onMounted(() => user.fetchOrders())
 
 function toggle(id: number) {
   expanded.value = expanded.value === id ? null : id
@@ -51,9 +53,11 @@ function formatDate(date: string) {
 
 const statusLabels: Record<Order['status'], string> = {
   pending:    'En attente',
-  processing: 'En cours',
-  shipped:    'Expédié',
-  delivered:  'Livré',
-  cancelled:  'Annulé',
+  paid:       'Payée',
+  processing: 'En préparation',
+  shipped:    'Expédiée',
+  delivered:  'Livrée',
+  cancelled:  'Annulée',
+  refunded:   'Remboursée',
 }
 </script>

@@ -1,70 +1,37 @@
 import { defineStore } from 'pinia'
 import type { UserProfile, Address, Order } from '@/types'
 
-// Simulation d'appel API — à remplacer par les vrais appels fetch vers le backend Symfony
-// Base URL : import.meta.env.VITE_API_URL (ex: http://localhost:8000/api)
+
 async function apiCall<T>(endpoint: string, method: string, body?: unknown): Promise<T> {
-  console.debug(`[API Simulation] ${method} ${endpoint}`, body)
-  // TODO: décommenter pour connecter le backend Symfony
-  // const res = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
-  //   method,
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${localStorage.getItem('token') ?? ''}`,
-  //   },
-  //   body: body !== undefined ? JSON.stringify(body) : undefined,
-  // })
-  // if (!res.ok) throw new Error(await res.text())
-  // return res.json() as Promise<T>
-  await new Promise<void>(resolve => setTimeout(resolve, 700))
-  return body as T
+  const res = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
+    method,
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: body !== undefined ? JSON.stringify(body) : undefined,
+  })
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}))
+    throw new Error(error.message ?? `Erreur ${res.status}`)
+  }
+  const text = await res.text()
+  return (text ? JSON.parse(text) : {}) as T
 }
 
 export const useUserStore = defineStore('user', {
   state: () => ({
     profile: {
-      firstName: 'Tom',
-      lastName: 'Engelibert',
-      email: 'tom@randollier.fr',
-      phone: '06 12 34 56 78',
-      birthdate: '1995-06-15',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      birthdate: '',
     } as UserProfile,
 
-    addresses: [
-      {
-        id: 1,
-        label: 'Domicile',
-        firstName: 'Tom',
-        lastName: 'Engelibert',
-        street: '12 rue des Alpes',
-        city: 'Grenoble',
-        postalCode: '38000',
-        country: 'France',
-        isDefault: true,
-      },
-    ] as Address[],
-
-    orders: [
-      {
-        id: 1042,
-        date: '2026-02-20',
-        status: 'delivered',
-        total: 155,
-        items: [
-          { productId: 4, name: 'Veste imperméable homme', price: 120, qty: 1, image: 'https://picsum.photos/300?random=4' },
-          { productId: 2, name: 'Gourde en inox', price: 35, qty: 1, image: 'https://picsum.photos/300?random=2' },
-        ],
-      },
-      {
-        id: 987,
-        date: '2025-11-05',
-        status: 'delivered',
-        total: 60,
-        items: [
-          { productId: 3, name: 'Sac à dos minimaliste', price: 60, qty: 1, image: 'https://picsum.photos/300?random=3' },
-        ],
-      },
-    ] as Order[],
+    addresses: [] as Address[],
+    orders: [] as Order[],
 
     saving: false,
     saveSuccess: null as string | null,
@@ -72,14 +39,46 @@ export const useUserStore = defineStore('user', {
   }),
 
   actions: {
+    // GET /api/me
+    async fetchProfile() {
+      try {
+        const data = await apiCall<UserProfile>('/me', 'GET')
+        this.profile = {
+          firstName: data.firstName,
+          lastName:  data.lastName,
+          email:     data.email,
+          phone:     data.phone ?? '',
+          birthdate: data.birthdate ?? '',
+        }
+      } catch {
+        // session expirée, géré par le auth store
+      }
+    },
+
+    async fetchAddresses() {
+      try {
+        this.addresses = await apiCall<Address[]>('/addresses', 'GET')
+      } catch {
+        // session expirée, géré par le auth store
+      }
+    },
+
+    async fetchOrders() {
+      try {
+        this.orders = await apiCall<Order[]>('/orders', 'GET')
+      } catch {
+        // session expirée, géré par le auth store
+      }
+    },
+
     // PUT /api/user/profile — { firstName, lastName, email, phone, birthdate }
     async updateProfile(data: UserProfile) {
       this.saving = true
       this.saveSuccess = null
       this.saveError = null
       try {
-        await apiCall<UserProfile>('/user/profile', 'PUT', data)
-        this.profile = { ...data }
+        const updated = await apiCall<UserProfile>('/profile', 'PUT', data)
+        this.profile = { ...updated }
         this.saveSuccess = 'Informations mises à jour avec succès.'
       } catch {
         this.saveError = 'Une erreur est survenue. Veuillez réessayer.'
@@ -114,8 +113,8 @@ export const useUserStore = defineStore('user', {
           const idx = this.addresses.findIndex(a => a.id === address.id)
           if (idx >= 0) this.addresses[idx] = address as Address
         } else {
-          await apiCall<Address>('/addresses', 'POST', address)
-          this.addresses.push({ ...address, id: Date.now() })
+          const created = await apiCall<Address>('/addresses', 'POST', address)
+          this.addresses.push(created)
         }
         if (address.isDefault) {
           this.addresses.forEach(a => { if (a.id !== address.id) a.isDefault = false })

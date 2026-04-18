@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useUserStore } from '@/stores/user'
 import FormField from '@/components/ui/formField/FormField.vue'
 import type { Address } from '@/types'
@@ -74,6 +74,8 @@ import styles from './AddressSection.module.css'
 
 const user = useUserStore()
 const showForm = ref(false)
+
+onMounted(() => user.fetchAddresses())
 const editingId = ref<number | undefined>(undefined)
 
 const emptyForm = () => ({

@@ -1,9 +1,5 @@
 import { defineStore } from 'pinia'
 
-// Simulation — ces emails ont déjà un compte
-const KNOWN_EMAILS = ['tom@randollier.fr', 'test@test.com', 'existing@test.com']
-
-// Simulation d'appel API — à remplacer par fetch vers le backend Symfony
 // POST /api/auth/check-email  → { exists: boolean }
 // POST /api/auth/register     → { token: string; user: AuthUser }
 // POST /api/auth/register-from-guest → { token: string }
@@ -47,12 +43,14 @@ export const useAuthStore = defineStore('auth', {
 
   actions: {
     async fetchMe() {
+      if (!localStorage.getItem('auth_session')) return
       try {
         const user = await apiCall<AuthUser>('/me', 'GET')
         this.currentUser = user
         this.isLoggedIn = true
       } catch {
-        // cookie absent ou expiré → pas connecté
+        // cookie expiré → on nettoie le flag
+        localStorage.removeItem('auth_session')
       }
     },
 
@@ -61,8 +59,8 @@ export const useAuthStore = defineStore('auth', {
       this.loading = true
       this.error = null
       try {
-        await new Promise<void>(resolve => setTimeout(resolve, 500))
-        this.emailCheckResult = KNOWN_EMAILS.includes(email.toLowerCase()) ? 'exists' : 'new'
+        const { exists } = await apiCall<{ exists: boolean }>(`/auth/check-email?email=${encodeURIComponent(email)}`, 'GET')
+        this.emailCheckResult = exists ? 'exists' : 'new'
       } finally {
         this.loading = false
       }
@@ -76,6 +74,7 @@ export const useAuthStore = defineStore('auth', {
       this.error = null
       try {
         await apiCall<unknown>('/login_check', 'POST', { email, password })
+        localStorage.setItem('auth_session', '1')
         await this.fetchMe()
         this.isGuest = false
         this.guestEmail = null
@@ -130,6 +129,7 @@ export const useAuthStore = defineStore('auth', {
       this.currentUser = null
       this.emailCheckResult = null
       this.error = null
+      localStorage.removeItem('auth_session')
     },
   },
 })
