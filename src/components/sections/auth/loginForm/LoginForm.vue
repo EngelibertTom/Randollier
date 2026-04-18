@@ -21,19 +21,19 @@
         placeholder="••••••••"
         required
       />
-      <button type="button" :class="styles.forgotLink">Mot de passe oublié ?</button>
+      <Button :class="styles.forgotLink">Mot de passe oublié ?</Button>
     </div>
 
     <p v-if="auth.error" :class="styles.errorMsg">{{ auth.error }}</p>
 
-    <button
+    <Button
       type="submit"
       :class="styles.primaryBtn"
       :disabled="auth.loading || !form.email || !form.password"
     >
       <span v-if="auth.loading" :class="styles.spinner"></span>
       {{ auth.loading ? 'Connexion…' : 'Se connecter' }}
-    </button>
+    </Button>
   </form>
 </template>
 
@@ -41,6 +41,7 @@
 import { reactive } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import styles from './LoginForm.module.css'
 
 const emit = defineEmits<{ success: [] }>()

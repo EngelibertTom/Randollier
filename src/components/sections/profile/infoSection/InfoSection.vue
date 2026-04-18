@@ -2,9 +2,9 @@
   <div :class="styles.section">
     <div :class="styles.sectionHeader">
       <h2 :class="styles.title">Informations personnelles</h2>
-      <button v-if="!editMode" type="button" :class="styles.editBtn" @click="startEdit">
+      <Button v-if="!editMode" :class="styles.editBtn" @click="startEdit">
         Modifier
-      </button>
+      </Button>
     </div>
 
     <form @submit.prevent="handleSubmit" :class="styles.form">
@@ -23,10 +23,10 @@
         <p v-else-if="user.saveError" :class="styles.error">{{ user.saveError }}</p>
 
         <div :class="styles.actions">
-          <button type="submit" :class="styles.submitBtn" :disabled="user.saving">
+          <Button type="submit" :class="styles.submitBtn" :disabled="user.saving">
             {{ user.saving ? 'Enregistrement…' : 'Enregistrer' }}
-          </button>
-          <button type="button" :class="styles.cancelBtn" @click="cancelEdit">Annuler</button>
+          </Button>
+          <Button :class="styles.cancelBtn" @click="cancelEdit">Annuler</Button>
         </div>
       </template>
     </form>
@@ -37,6 +37,7 @@
 import { ref, reactive, watch } from 'vue'
 import { useUserStore } from '@/stores/user'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import type { UserProfile } from '@/types'
 import styles from './InfoSection.module.css'
 

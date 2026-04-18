@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import { useCartStore } from '../stores/cart'
 import Breadcrumb from '@/components/ui/breadcrumb/Breadcrumb.vue'
+import Button from '@/components/ui/button/Button.vue'
 import type { Product } from '@/types'
 
 const route = useRoute()
@@ -31,7 +32,7 @@ const addToCart = () => {
     <div v-if="product">
       <h1>Produit Détails</h1>
       <p>Produit ID: {{ $route.params.id }}</p>
-      <button @click="addToCart">Ajouter au panier</button>
+      <Button @click="addToCart">Ajouter au panier</Button>
     </div>
 
     <p v-else>Chargement…</p>

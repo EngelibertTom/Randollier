@@ -23,21 +23,20 @@
           </div>
         </div>
 
-        <button type="button" :class="styles.newAddressBtn" @click="useNewAddress = true">
+        <Button :class="styles.newAddressBtn" @click="useNewAddress = true">
           + Utiliser une autre adresse
-        </button>
+        </Button>
       </template>
 
       <!-- Formulaire nouvelle adresse (invité ou nouvelle adresse) -->
       <template v-else>
-        <button
+        <Button
           v-if="auth.isLoggedIn && savedAddresses.length > 0"
-          type="button"
           :class="styles.backBtn"
           @click="useNewAddress = false"
         >
           ← Mes adresses enregistrées
-        </button>
+        </Button>
 
         <form @submit.prevent="handleContinue" :class="styles.form">
           <div :class="styles.row">
@@ -63,14 +62,13 @@
         </form>
       </template>
 
-      <button
-        type="button"
+      <Button
         :class="styles.continueBtn"
         :disabled="!canContinue"
         @click="handleContinue"
       >
         Continuer vers le paiement
-      </button>
+      </Button>
     </div>
 
     <div :class="styles.summary">
@@ -84,6 +82,7 @@ import { ref, reactive, computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useUserStore } from '@/stores/user'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import CartSummary from '../cartSummary/CartSummary.vue'
 import type { DeliveryAddress } from '@/types'
 import styles from './DeliveryStep.module.css'

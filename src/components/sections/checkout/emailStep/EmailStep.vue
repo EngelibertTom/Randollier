@@ -8,16 +8,16 @@
 
       <p v-if="error" :class="styles.error">{{ error }}</p>
 
-      <button type="submit" :class="styles.primaryBtn" :disabled="loading || !email">
+      <Button type="submit" :class="styles.primaryBtn" :disabled="loading || !email">
         {{ loading ? 'Vérification…' : 'Continuer' }}
-      </button>
+      </Button>
     </form>
 
     <div :class="styles.divider"><span>ou</span></div>
 
-    <button type="button" :class="styles.guestBtn" @click="handleAsGuest" :disabled="!email">
+    <Button :class="styles.guestBtn" @click="handleAsGuest" :disabled="!email">
       Continuer en tant qu'invité
-    </button>
+    </Button>
 
     <p :class="styles.guestNote">
       Commandez sans créer de compte. Vous pourrez toujours en créer un après.
@@ -29,6 +29,7 @@
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import styles from './EmailStep.module.css'
 
 const emit = defineEmits<{

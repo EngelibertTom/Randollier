@@ -18,11 +18,11 @@
       <router-link :to="auth.isLoggedIn ? '/profile' : '/auth'">
         <img src="@/assets/icons/profil.svg" alt="Profil"/>
       </router-link>
-      <button :class="styles.hamburger" @click="menuOpen = !menuOpen" aria-label="Menu">
+      <Button :class="styles.hamburger" @click="menuOpen = !menuOpen" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
-      </button>
+      </Button>
     </div>
   </header>
 </template>
@@ -31,6 +31,7 @@
 import { ref } from 'vue'
 import { useCartStore } from '../../stores/cart'
 import { useAuthStore } from '../../stores/auth'
+import Button from '@/components/ui/button/Button.vue'
 import styles from './Header.module.css'
 
 const cart = useCartStore()

@@ -2,7 +2,7 @@
   <div :class="styles.section">
     <div :class="styles.sectionHeader">
       <h2 :class="styles.title">Mes adresses</h2>
-      <button v-if="!showForm" :class="styles.addBtn" @click="startAdd">+ Ajouter</button>
+      <Button v-if="!showForm" :class="styles.addBtn" @click="startAdd">+ Ajouter</Button>
     </div>
 
     <div v-if="user.addresses.length > 0" :class="styles.addresses">
@@ -15,8 +15,8 @@
         <p>{{ addr.street }}</p>
         <p>{{ addr.postalCode }} {{ addr.city }}, {{ addr.country }}</p>
         <div :class="styles.cardActions">
-          <button @click="startEdit(addr)">Modifier</button>
-          <button :class="styles.deleteBtn" @click="user.deleteAddress(addr.id)">Supprimer</button>
+          <Button @click="startEdit(addr)">Modifier</Button>
+          <Button :class="styles.deleteBtn" @click="user.deleteAddress(addr.id)">Supprimer</Button>
         </div>
       </div>
     </div>
@@ -56,10 +56,10 @@
       <p v-else-if="user.saveError" :class="styles.error">{{ user.saveError }}</p>
 
       <div :class="styles.formActions">
-        <button type="button" :class="styles.submitBtn" :disabled="user.saving" @click="handleSave">
+        <Button :class="styles.submitBtn" :disabled="user.saving" @click="handleSave">
           {{ user.saving ? 'Enregistrement…' : 'Enregistrer' }}
-        </button>
-        <button type="button" :class="styles.cancelBtn" @click="showForm = false">Annuler</button>
+        </Button>
+        <Button :class="styles.cancelBtn" @click="showForm = false">Annuler</Button>
       </div>
     </div>
   </div>
@@ -69,6 +69,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useUserStore } from '@/stores/user'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import type { Address } from '@/types'
 import styles from './AddressSection.module.css'
 

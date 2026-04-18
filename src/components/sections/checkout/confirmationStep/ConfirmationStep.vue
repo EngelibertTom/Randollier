@@ -15,22 +15,22 @@
       </p>
 
       <template v-if="!showPasswordForm">
-        <button type="button" :class="styles.createBtn" @click="showPasswordForm = true">
+        <Button :class="styles.createBtn" @click="showPasswordForm = true">
           Créer mon compte
-        </button>
-        <button type="button" :class="styles.skipBtn" @click="accountCreated = true">
+        </Button>
+        <Button :class="styles.skipBtn" @click="accountCreated = true">
           Non merci
-        </button>
+        </Button>
       </template>
 
       <template v-else>
         <form @submit.prevent="handleCreateAccount" :class="styles.form">
           <FormField label="Choisir un mot de passe" type="password" v-model="password" required />
           <p v-if="auth.error" :class="styles.error">{{ auth.error }}</p>
-          <button type="submit" :class="styles.createBtn" :disabled="auth.loading || !password">
+          <Button type="submit" :class="styles.createBtn" :disabled="auth.loading || !password">
             {{ auth.loading ? 'Création…' : 'Créer mon compte' }}
-          </button>
-          <button type="button" :class="styles.skipBtn" @click="accountCreated = true">Annuler</button>
+          </Button>
+          <Button :class="styles.skipBtn" @click="accountCreated = true">Annuler</Button>
         </form>
       </template>
     </div>
@@ -52,6 +52,7 @@
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import styles from './ConfirmationStep.module.css'
 
 defineProps<{ orderId: string; email: string }>()

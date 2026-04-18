@@ -1,6 +1,6 @@
 <template>
   <div :class="styles.card">
-    <button type="button" :class="styles.backBtn" @click="emit('back')">← Changer d'email</button>
+    <Button :class="styles.backBtn" @click="emit('back')">← Changer d'email</Button>
 
     <h1 :class="styles.title">Créer votre compte</h1>
     <p :class="styles.emailBadge">{{ email }}</p>
@@ -21,20 +21,20 @@
 
       <p v-if="auth.error" :class="styles.error">{{ auth.error }}</p>
 
-      <button
+      <Button
         type="submit"
         :class="styles.primaryBtn"
         :disabled="auth.loading || !!passwordError || !canSubmit"
       >
         {{ auth.loading ? 'Création…' : 'Créer mon compte' }}
-      </button>
+      </Button>
     </form>
 
     <div :class="styles.divider"><span>ou</span></div>
 
-    <button type="button" :class="styles.guestBtn" @click="handleAsGuest">
+    <Button :class="styles.guestBtn" @click="handleAsGuest">
       Continuer en tant qu'invité
-    </button>
+    </Button>
   </div>
 </template>
 
@@ -42,6 +42,7 @@
 import { reactive, computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import styles from './RegisterStep.module.css'
 
 const props = defineProps<{ email: string }>()

@@ -8,14 +8,14 @@
 
     <div :class="styles.toolbar" v-reveal="100">
       <div :class="styles.categories">
-        <button
+        <Button
           v-for="cat in categories"
           :key="cat"
           :class="[styles.catBtn, activeCategory === cat && styles.catBtnActive]"
           @click="setCategory(cat)"
         >
           {{ cat }}
-        </button>
+        </Button>
       </div>
 
       <select :class="styles.sortSelect" v-model="sortOrder">
@@ -35,7 +35,7 @@
 
     <div v-else :class="styles.empty" v-reveal>
       <p>Aucun produit trouvé dans cette catégorie.</p>
-      <button :class="styles.resetBtn" @click="setCategory('Tous')">Voir tous les produits</button>
+      <Button :class="styles.resetBtn" @click="setCategory('Tous')">Voir tous les produits</Button>
     </div>
   </div>
 </template>
@@ -44,6 +44,7 @@
 import { ref, computed, onMounted } from 'vue'
 import ProductCard from '@/components/productCard/ProductCard.vue'
 import Breadcrumb from '@/components/ui/breadcrumb/Breadcrumb.vue'
+import Button from '@/components/ui/button/Button.vue'
 import type { Product } from '@/types'
 import styles from './MainSection.module.css'
 

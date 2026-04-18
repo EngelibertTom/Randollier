@@ -11,17 +11,17 @@
       </div>
 
       <nav :class="styles.nav">
-        <button
+        <Button
           v-for="item in navItems"
           :key="item.id"
           :class="[styles.navItem, activeSection === item.id && styles.navItemActive]"
           @click="activeSection = item.id"
         >
           {{ item.label }}
-        </button>
+        </Button>
       </nav>
 
-      <button :class="styles.logoutBtn" @click="logout">Se déconnecter</button>
+      <Button :class="styles.logoutBtn" @click="logout">Se déconnecter</Button>
     </aside>
 
     <div :class="styles.content">
@@ -39,6 +39,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { useAuthStore } from '@/stores/auth'
+import Button from '@/components/ui/button/Button.vue'
 import InfoSection     from '@/components/sections/profile/infoSection/InfoSection.vue'
 import AddressSection  from '@/components/sections/profile/addressSection/AddressSection.vue'
 import OrdersSection   from '@/components/sections/profile/ordersSection/OrdersSection.vue'

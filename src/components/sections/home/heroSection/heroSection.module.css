@@ -38,6 +38,14 @@
   font-size: var(--font-size-h1);
 }
 
+.ctaBtn {
+  border-radius: 30px;
+  padding: 8px 16px;
+  background-color: #ffffff;
+  color: #111111;
+  width: fit-content;
+}
+
 @media (max-width: 768px) {
   .heroContainer {
     height: 52vh;

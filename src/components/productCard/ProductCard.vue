@@ -12,9 +12,9 @@
         {{ product.name }}
       </h3>
 
-      <button :class="styles.addToCart" @click="addToCart">
+      <Button :class="styles.addToCart" @click="addToCart">
         <img src="@/assets/icons/addCard.svg" alt="icon ajout au panier"/>
-      </button>
+      </Button>
     </div>
 
     <p :class="styles.price">
@@ -27,6 +27,7 @@
 <script setup lang="ts">
 import { useCartStore } from '../../stores/cart'
 import styles from './ProductCard.module.css'
+import Button from '@/components/ui/button/Button.vue'
 import type { Product } from '../../types';
 
 const props = defineProps<{

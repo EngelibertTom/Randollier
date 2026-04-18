@@ -1,7 +1,8 @@
 .button {
-    border-radius: 30px;
-    padding: 8px 16px ;
-    background-color: #ffffff;
-    color:#111111;
-    width: fit-content;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  padding: 0;
 }

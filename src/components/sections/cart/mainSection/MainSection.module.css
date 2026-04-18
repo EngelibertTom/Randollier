@@ -169,6 +169,16 @@
   color: #444;
 }
 
+.checkoutBtn {
+  background-color: #3DAA5C;
+  color: #ffffff;
+  width: 100%;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 30px;
+  padding: 8px 16px;
+}
+
 .acceptedPayments {
   display: flex;
   flex-direction: column;

@@ -35,14 +35,14 @@
 
     <p v-if="auth.error" :class="styles.errorMsg">{{ auth.error }}</p>
 
-    <button
+    <Button
       type="submit"
       :class="styles.primaryBtn"
       :disabled="auth.loading || !!passwordError || !canSubmit"
     >
       <span v-if="auth.loading" :class="styles.spinner"></span>
       {{ auth.loading ? 'Création…' : 'Créer mon compte' }}
-    </button>
+    </Button>
 
     <p :class="styles.legalNote">
       En créant un compte, vous acceptez nos
@@ -56,6 +56,7 @@
 import { reactive, computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import styles from './RegisterForm.module.css'
 
 const emit = defineEmits<{ success: [] }>()

@@ -1,7 +1,7 @@
 <template>
   <div :class="styles.layout">
     <div :class="styles.main">
-      <button type="button" :class="styles.backBtn" @click="emit('back')">← Modifier la livraison</button>
+      <Button :class="styles.backBtn" @click="emit('back')">← Modifier la livraison</Button>
       <h2 :class="styles.title">Paiement</h2>
 
       <div :class="styles.deliveryRecap">
@@ -34,9 +34,9 @@
 
         <p v-if="error" :class="styles.error">{{ error }}</p>
 
-        <button type="submit" :class="styles.payBtn" :disabled="loading || !canPay">
+        <Button type="submit" :class="styles.payBtn" :disabled="loading || !canPay">
           {{ loading ? 'Traitement…' : `Payer ${fmt(cart.total)}` }}
-        </button>
+        </Button>
       </form>
     </div>
 
@@ -50,6 +50,7 @@
 import { ref, reactive, computed } from 'vue'
 import { useCartStore } from '@/stores/cart'
 import FormField from '@/components/ui/formField/FormField.vue'
+import Button from '@/components/ui/button/Button.vue'
 import CartSummary from '../cartSummary/CartSummary.vue'
 import type { DeliveryAddress } from '@/types'
 import styles from './PaymentStep.module.css'

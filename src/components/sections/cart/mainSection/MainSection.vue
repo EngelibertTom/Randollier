@@ -28,7 +28,7 @@
         <span :class="styles.summaryAmount">{{ livraison === 0 ? '—' : formatPrice(livraison) }}</span>
       </div>
 
-       <Button text="Paiement" bgColor="#3DAA5C" textColor="#ffffff" :customStyle="{ width: '100%', fontWeight: 'bold', fontSize: '1rem' }" @click="router.push('/checkout')"/>
+      <Button :class="styles.checkoutBtn" @click="router.push('/checkout')">Paiement</Button>
 
       <div :class="styles.acceptedPayments">
         <span :class="styles.acceptedLabel">Nous acceptons :</span>

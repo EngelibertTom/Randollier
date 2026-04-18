@@ -3,7 +3,7 @@
     <div :class="styles.heroText" v-reveal>
       <h1>Randollier</h1>
       <p>Tout l'équipement nécessaire pour vos randonnées</p>
-      <Button text="Découvrez notre catalogue"/>
+      <Button :class="styles.ctaBtn">Découvrez notre catalogue</Button>
     </div>
   </div>
 </template>

@@ -6,12 +6,12 @@
       <span :class="styles.itemPrice">{{ formatPrice(product.price) }}</span>
       <div :class="styles.itemNameRow">
         <span :class="styles.itemName">{{ product.name }}</span>
-        <button :class="styles.removeBtn" @click="removeAll">×</button>
+        <Button :class="styles.removeBtn" @click="removeAll">×</Button>
       </div>
       <div :class="styles.quantityControl">
-        <button :class="styles.qtyBtn" @click="decrement">−</button>
+        <Button :class="styles.qtyBtn" @click="decrement">−</Button>
         <span :class="styles.qtyValue">{{ quantity }}</span>
-        <button :class="styles.qtyBtn" @click="increment">+</button>
+        <Button :class="styles.qtyBtn" @click="increment">+</Button>
       </div>
     </div>
   </div>
@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import styles from './CartItem.module.css'
 import { useCartStore } from '@/stores/cart'
+import Button from '@/components/ui/button/Button.vue'
 import type { Product } from '@/types'
 
 const props = defineProps<{
