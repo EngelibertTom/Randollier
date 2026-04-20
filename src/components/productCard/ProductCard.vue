@@ -1,16 +1,20 @@
 <template>
   <div :class="styles.card">
 
-    <img 
-      :src="product.image" 
-      :alt="product.name" 
-      :class="styles.image"
-    />
+    <RouterLink :to="`/product/${product.id}`" :class="styles.imageLink">
+      <img
+        :src="product.image"
+        :alt="product.name"
+        :class="styles.image"
+      />
+    </RouterLink>
 
     <div :class="styles.header">
-      <h3 :class="styles.title">
-        {{ product.name }}
-      </h3>
+      <RouterLink :to="`/product/${product.id}`" :class="styles.titleLink">
+        <h3 :class="styles.title">
+          {{ product.name }}
+        </h3>
+      </RouterLink>
 
       <Button :class="styles.addToCart" @click="addToCart">
         <img src="@/assets/icons/addCard.svg" alt="icon ajout au panier"/>
@@ -18,7 +22,7 @@
     </div>
 
     <p :class="styles.price">
-      {{ product.price }} € 
+      {{ product.price }} €
     </p>
 
   </div>
@@ -33,7 +37,6 @@ import type { Product } from '../../types';
 const props = defineProps<{
   product: Product
 }>()
-
 
 const cart = useCartStore();
 

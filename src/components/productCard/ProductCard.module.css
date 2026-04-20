@@ -31,10 +31,16 @@
   margin-left: 14px;
 }
 
-.link {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: #2563eb;
+.imageLink {
+  display: block;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.titleLink:hover .title {
   text-decoration: underline;
 }
 
