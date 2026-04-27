@@ -27,7 +27,10 @@
       </select>
     </div>
 
-    <div v-if="filteredProducts.length > 0" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+    <p v-if="store.loading" :class="styles.empty">Chargement…</p>
+    <p v-else-if="store.error" :class="styles.empty">{{ store.error }}</p>
+
+    <div v-else-if="filteredProducts.length > 0" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
       <div v-for="(product, index) in filteredProducts" :key="product.id" v-reveal="index * 60">
         <ProductCard :product="product" />
       </div>
@@ -42,22 +45,19 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { useProductsStore } from '@/stores/products'
 import ProductCard from '@/components/productCard/ProductCard.vue'
 import Breadcrumb from '@/components/ui/breadcrumb/Breadcrumb.vue'
 import Button from '@/components/ui/button/Button.vue'
-import type { Product } from '@/types'
 import styles from './MainSection.module.css'
 
-const products = ref<Product[]>([])
+const store = useProductsStore()
 const activeCategory = ref('Tous')
 const sortOrder = ref('')
 
 const categories = ['Tous', 'Homme', 'Femme', 'Sacs', 'Équipements']
 
-onMounted(async () => {
-  const data = await fetch('/products.json')
-  products.value = await data.json()
-})
+onMounted(() => store.fetchAll())
 
 function setCategory(cat: string) {
   activeCategory.value = cat
@@ -65,12 +65,12 @@ function setCategory(cat: string) {
 
 const filteredProducts = computed(() => {
   let list = activeCategory.value === 'Tous'
-    ? [...products.value]
-    : products.value.filter(p => p.category === activeCategory.value)
+    ? [...store.products]
+    : store.products.filter(p => p.category.name === activeCategory.value)
 
   switch (sortOrder.value) {
-    case 'price-asc':  list.sort((a, b) => a.price - b.price); break
-    case 'price-desc': list.sort((a, b) => b.price - a.price); break
+    case 'price-asc':  list.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)); break
+    case 'price-desc': list.sort((a, b) => parseFloat(b.price) - parseFloat(a.price)); break
     case 'name-asc':   list.sort((a, b) => a.name.localeCompare(b.name)); break
     case 'name-desc':  list.sort((a, b) => b.name.localeCompare(a.name)); break
   }

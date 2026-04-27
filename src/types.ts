@@ -2,13 +2,22 @@
 
 
 
+export interface ProductCategory {
+  id: number
+  name: string
+  slug: string
+}
+
 export interface Product {
   id: number
   name: string
-  price: number
-  image: string
-  description: string
-  category: string
+  slug: string
+  price: string
+  image: string | null
+  description: string | null
+  stock: number
+  isActive: boolean
+  category: ProductCategory
 }
 
 export interface CartItem {
