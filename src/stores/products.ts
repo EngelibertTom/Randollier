@@ -33,11 +33,6 @@ export const useProductsStore = defineStore('products', {
     },
 
     async fetchOne(id: number) {
-      const cached = this.products.find(p => p.id === id)
-      if (cached) {
-        this.current = cached
-        return
-      }
       this.loading = true
       this.error = null
       try {

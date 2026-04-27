@@ -8,6 +8,14 @@ export interface ProductCategory {
   slug: string
 }
 
+export interface ProductReview {
+  id: number
+  rating: number
+  comment: string | null
+  createdAt: string
+  user: { firstName: string }
+}
+
 export interface Product {
   id: number
   name: string
@@ -18,6 +26,7 @@ export interface Product {
   stock: number
   isActive: boolean
   category: ProductCategory
+  reviews?: ProductReview[]
 }
 
 export interface CartItem {
