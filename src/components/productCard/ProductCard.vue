@@ -17,7 +17,7 @@
       </RouterLink>
 
       <Button :class="styles.addToCart" @click="addToCart">
-        <img src="@/assets/icons/addCard.svg" alt="icon ajout au panier"/>
+        <AddCardIcon :class="styles.addToCartIcon" aria-label="Ajouter au panier"/>
       </Button>
     </div>
 
@@ -32,6 +32,7 @@
 import { useCartStore } from '../../stores/cart'
 import styles from './ProductCard.module.css'
 import Button from '@/components/ui/button/Button.vue'
+import AddCardIcon from '@/assets/icons/addCard.svg?component'
 import type { Product } from '../../types';
 
 const props = defineProps<{

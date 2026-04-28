@@ -1,15 +1,15 @@
 <template>
   <div :class="styles.certifs">
     <div :class="styles.certif" v-reveal="0">
-      <img src="@/assets/images/card.svg"/>
+      <CardIcon :class="styles.icon"/>
       <p>Paiement sécurisé</p>
     </div>
     <div :class="styles.certif" v-reveal="150">
-      <img src="@/assets/images/delivery.svg"/>
+      <DeliveryIcon :class="styles.icon"/>
       <p>Livraison rapide</p>
     </div>
     <div :class="styles.certif" v-reveal="300">
-      <img src="@/assets/images/check.svg"/>
+      <CheckIcon :class="styles.icon"/>
       <p>Satisfaction garantie</p>
     </div>
   </div>
@@ -17,4 +17,7 @@
 
 <script setup lang="ts">
 import styles from './CertifsSection.module.css'
+import CardIcon from '@/assets/images/card.svg?component'
+import DeliveryIcon from '@/assets/images/delivery.svg?component'
+import CheckIcon from '@/assets/images/check.svg?component'
 </script>

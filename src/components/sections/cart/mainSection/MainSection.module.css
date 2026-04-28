@@ -201,6 +201,7 @@
   width: 44px;
   height: 28px;
   border-radius: 5px;
+  color: var(--color-text);
 }
 
 @media (max-width: 768px) {

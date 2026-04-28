@@ -8,20 +8,22 @@
   font-family: "Albert Sans", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Light mode (défaut) */
   --color-bg: #F8F8F8;
   --color-surface: #ffffff;
   --color-border: #E0E0E0;
   --color-divider: #EFEFEF;
   --color-text: #111111;
   --color-text-muted: #666666;
+
+  /* Typo & layout */
   --radius-card: 30px;
   --radius-card-top: 30px 30px 0px 0px;
   --font-size-h1: 2.5rem;
@@ -31,6 +33,17 @@
   --font-weight-heading: 700;
   --font-weight-subheading: 600;
   --line-height-heading: 1.1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #111111;
+    --color-surface: #1c1c1c;
+    --color-border: #2e2e2e;
+    --color-divider: #252525;
+    --color-text: #f1f1f1;
+    --color-text-muted: #999999;
+  }
 }
 
 
@@ -70,14 +83,14 @@ h3 {
   text-align: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #111111;
-    background-color: #ffffff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+button {
+  background-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 /* Scroll reveal animations */

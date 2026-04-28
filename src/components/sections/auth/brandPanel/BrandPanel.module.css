@@ -4,8 +4,8 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  background-color: var(--color-text);
-  color: var(--color-surface);
+  background-color: #111111;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,7 +26,7 @@
 .logo {
   font-size: var(--font-size-logo);
   font-weight: var(--font-weight-heading);
-  color: var(--color-surface);
+  color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   position: relative;
@@ -48,7 +48,7 @@
   font-weight: var(--font-weight-heading);
   line-height: 1.15;
   margin: 0 0 16px;
-  color: var(--color-surface);
+  color: #ffffff;
   text-align: left;
 }
 

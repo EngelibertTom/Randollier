@@ -33,9 +33,9 @@
       <div :class="styles.acceptedPayments">
         <span :class="styles.acceptedLabel">Nous acceptons :</span>
         <div :class="styles.paymentIcons">
-          <img :src="paypalIcon" alt="icone paypal"/>
-          <img :src="masterCardIcon" alt="mastercard icone"/>
-          <img :src="visaIcon" alt="visa icone"/>
+          <PaypalIcon :class="styles.payIcon" aria-label="PayPal"/>
+          <MastercardIcon :class="styles.payIcon" aria-label="Mastercard"/>
+          <VisaIcon :class="styles.payIcon" aria-label="Visa"/>
         </div>
       </div>
     </div>
@@ -49,9 +49,9 @@ import styles from './MainSection.module.css'
 import { useCartStore } from '@/stores/cart'
 import CartItem from '@/components/cartItem/CartItem.vue'
 import Button from '@/components/ui/button/Button.vue'
-import visaIcon from "@/assets/icons/visa.svg"
-import paypalIcon from "@/assets/icons/paypal.svg"
-import masterCardIcon from "@/assets/icons/masterCard.svg"
+import VisaIcon from '@/assets/icons/visa.svg?component'
+import PaypalIcon from '@/assets/icons/paypal.svg?component'
+import MastercardIcon from '@/assets/icons/mastercard.svg?component'
 
 const cart = useCartStore()
 const router = useRouter()

@@ -15,8 +15,9 @@
   gap: 20px;
 }
 
-.certif img {
+.icon {
   height: 28px;
+  color: var(--color-text);
 }
 
 @media (max-width: 768px) {

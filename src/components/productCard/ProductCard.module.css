@@ -50,8 +50,11 @@
   cursor: pointer;
 }
 
-.addToCart img {
+.addToCartIcon {
+  width: 28px;
   height: 28px;
+  color: var(--color-text);
+  display: block;
 }
 
 .addToCart:hover {
