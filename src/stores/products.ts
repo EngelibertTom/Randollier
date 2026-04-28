@@ -13,6 +13,7 @@ async function apiCall<T>(endpoint: string): Promise<T> {
 export const useProductsStore = defineStore('products', {
   state: () => ({
     products: [] as Product[],
+    featured: [] as Product[],
     current: null as Product | null,
     loading: false,
     error: null as string | null,
@@ -27,6 +28,19 @@ export const useProductsStore = defineStore('products', {
         this.products = await apiCall<Product[]>('/products')
       } catch {
         this.error = 'Impossible de charger les produits.'
+      } finally {
+        this.loading = false
+      }
+    },
+
+    async fetchFeatured() {
+      if (this.featured.length > 0) return
+      this.loading = true
+      this.error = null
+      try {
+        this.featured = await apiCall<Product[]>('/products/featured')
+      } catch {
+        this.error = 'Impossible de charger les produits en vedette.'
       } finally {
         this.loading = false
       }
