@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type { UserProfile, Address, Order } from '@/types'
+import { useAuthStore } from '@/stores/auth'
 
 
 async function apiCall<T>(endpoint: string, method: string, body?: unknown): Promise<T> {
@@ -39,19 +40,17 @@ export const useUserStore = defineStore('user', {
   }),
 
   actions: {
-    // GET /api/me
     async fetchProfile() {
-      try {
-        const data = await apiCall<UserProfile>('/me', 'GET')
-        this.profile = {
-          firstName: data.firstName,
-          lastName:  data.lastName,
-          email:     data.email,
-          phone:     data.phone ?? '',
-          birthdate: data.birthdate ?? '',
-        }
-      } catch {
-        // session expirée, géré par le auth store
+      const authStore = useAuthStore()
+      await authStore.fetchMe()
+      const user = authStore.currentUser
+      if (!user) return
+      this.profile = {
+        firstName: user.firstName,
+        lastName:  user.lastName,
+        email:     user.email,
+        phone:     user.phone ?? '',
+        birthdate: user.birthdate ?? '',
       }
     },
 

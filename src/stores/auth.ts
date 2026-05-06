@@ -27,6 +27,8 @@ export interface AuthUser {
   email: string
   firstName: string
   lastName: string
+  phone?: string
+  birthdate?: string
 }
 
 export const useAuthStore = defineStore('auth', {
@@ -44,6 +46,7 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async fetchMe() {
       if (!localStorage.getItem('auth_session')) return
+      if (this.currentUser) return
       try {
         const user = await apiCall<AuthUser>('/me', 'GET')
         this.currentUser = user
