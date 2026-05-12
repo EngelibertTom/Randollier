@@ -23,14 +23,6 @@ async function apiCall<T>(endpoint: string, method: string, body?: unknown): Pro
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    profile: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      birthdate: '',
-    } as UserProfile,
-
     addresses: [] as Address[],
     orders: [] as Order[],
 
@@ -39,20 +31,20 @@ export const useUserStore = defineStore('user', {
     saveError: null as string | null,
   }),
 
-  actions: {
-    async fetchProfile() {
-      const authStore = useAuthStore()
-      await authStore.fetchMe()
-      const user = authStore.currentUser
-      if (!user) return
-      this.profile = {
-        firstName: user.firstName,
-        lastName:  user.lastName,
-        email:     user.email,
-        phone:     user.phone ?? '',
-        birthdate: user.birthdate ?? '',
+  getters: {
+    profile(): UserProfile {
+      const user = useAuthStore().currentUser
+      return {
+        firstName: user?.firstName ?? '',
+        lastName:  user?.lastName ?? '',
+        email:     user?.email ?? '',
+        phone:     user?.phone ?? '',
+        birthdate: user?.birthdate ?? '',
       }
     },
+  },
+
+  actions: {
 
     async fetchAddresses() {
       try {

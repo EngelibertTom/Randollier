@@ -70,7 +70,6 @@ export const useAuthStore = defineStore('auth', {
     },
 
     // POST /api/auth/login — { email, password }
-    // Simulation : mot de passe "123456" fonctionne toujours
     async login(email: string, password: string) {
 
       this.loading = true

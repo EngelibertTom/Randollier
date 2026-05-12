@@ -20,7 +20,7 @@ export interface Product {
   id: number
   name: string
   slug: string
-  price: string
+  price: number
   image: string | null
   description: string | null
   stock: number

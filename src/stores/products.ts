@@ -10,6 +10,10 @@ async function apiCall<T>(endpoint: string): Promise<T> {
   return res.json() as Promise<T>
 }
 
+function normalizeProduct(p: Product): Product {
+  return { ...p, price: parseFloat(p.price as unknown as string) }
+}
+
 export const useProductsStore = defineStore('products', {
   state: () => ({
     products: [] as Product[],
@@ -25,7 +29,7 @@ export const useProductsStore = defineStore('products', {
       this.loading = true
       this.error = null
       try {
-        this.products = await apiCall<Product[]>('/products')
+        this.products = (await apiCall<Product[]>('/products')).map(normalizeProduct)
       } catch {
         this.error = 'Impossible de charger les produits.'
       } finally {
@@ -38,7 +42,7 @@ export const useProductsStore = defineStore('products', {
       this.loading = true
       this.error = null
       try {
-        this.featured = await apiCall<Product[]>('/products/featured')
+        this.featured = (await apiCall<Product[]>('/products/featured')).map(normalizeProduct)
       } catch {
         this.error = 'Impossible de charger les produits en vedette.'
       } finally {
@@ -50,7 +54,7 @@ export const useProductsStore = defineStore('products', {
       this.loading = true
       this.error = null
       try {
-        this.current = await apiCall<Product>(`/products/${id}`)
+        this.current = normalizeProduct(await apiCall<Product>(`/products/${id}`))
       } catch {
         this.error = 'Produit introuvable.'
       } finally {

@@ -32,7 +32,10 @@ export const useCartStore = defineStore('cart', {
         },
         loadFromStorage() {
             const s = localStorage.getItem('cart')
-            if (s) this.items = JSON.parse(s)
+            if (s) {
+                const parsed = JSON.parse(s) as { product: Product; qty: number }[]
+                this.items = parsed.map(i => ({ ...i, product: { ...i.product, price: parseFloat(i.product.price as unknown as string) } }))
+            }
         },
     }
 })

@@ -16,6 +16,7 @@
   min-width: 100px;
   background-color: var(--color-border);
   border-radius: 16px;
+  object-fit: cover;
 }
 
 .itemDetails {

@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { useAuthStore } from '@/stores/auth'
@@ -53,7 +53,6 @@ const auth = useAuthStore()
 const router = useRouter()
 const activeSection = ref<Section>('info')
 
-onMounted(() => user.fetchProfile())
 
 function logout() {
   auth.logout()

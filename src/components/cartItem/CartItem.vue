@@ -1,6 +1,12 @@
 <template>
   <div :class="styles.item">
-    <div :class="styles.itemImage" />
+    <img
+      v-if="product.image"
+      :src="product.image"
+      :alt="product.name"
+      :class="styles.itemImage"
+    />
+    <div v-else :class="styles.itemImage" />
 
     <div :class="styles.itemDetails">
       <span :class="styles.itemPrice">{{ formatPrice(product.price) }}</span>
